@@ -1,0 +1,30 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/csharp/csharp.csproj"
+            ],
+            "problemMatcher": "$tsc",
+            "dependsOn": [
+                "build-go"
+            ]
+        },
+        {
+            "label": "build-go",
+            "type": "process",
+            "command": "go",
+            "args": [
+                "build",
+                "-o",
+                "${workspaceFolder}/bin/gosample.dll",
+                "--buildmode=c-shared",
+                "${workspaceFolder}/go/main.go"
+            ]
+        }
+    ]
+}
